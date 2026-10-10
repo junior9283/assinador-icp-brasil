@@ -109,6 +109,21 @@ class PdfSigningServiceTest {
     }
 
     @Test
+    void doesNotWriteThroughSymlinkPlantedAtTemporaryName() throws Exception {
+        Path input = createPdf("entrada.pdf");
+        Path victim = Files.writeString(tempDir.resolve("vitima.txt"), "conteudo original");
+        Files.createSymbolicLink(tempDir.resolve("entrada_assinado.pdf.tmp"), victim);
+
+        SigningResult result = sign(new PdfSigningService(), input, new SignaturePlacement(1, 50, 60, 180, 60), null);
+
+        assertTrue(result.success(), result.message());
+        assertEquals("conteudo original", Files.readString(victim));
+        try (var files = Files.list(tempDir)) {
+            assertEquals(1, files.filter(f -> f.toString().endsWith(".tmp")).count(), "Só o link plantado deve restar.");
+        }
+    }
+
+    @Test
     void preservesExistingSignatureWhenSigningAgain() throws Exception {
         Path input = createPdf("original.pdf");
         PdfSigningService service = new PdfSigningService();

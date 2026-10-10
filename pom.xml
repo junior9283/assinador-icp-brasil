@@ -6,7 +6,7 @@
 
     <groupId>br.com.vida</groupId>
     <artifactId>assinador</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>ASSINADOR</name>
     <description>Assinador desktop de PDFs com certificados A1 ICP-Brasil</description>
 

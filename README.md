@@ -25,7 +25,8 @@ Os dois pacotes já incluem o Java; não é preciso instalar nada.
 ## Segurança e privacidade
 
 - Os certificados ficam somente no seu computador, em `~/.assinador` (Windows: `%USERPROFILE%\.assinador`), num cofre cifrado com AES-256-GCM.
-- A chave do cofre é derivada por PBKDF2-HMAC-SHA-256 (600.000 iterações) ou protegida por desbloqueio automático local.
+- O cofre abre sem senha ao iniciar: a chave fica em `.assinador/auto-unlock.key`, legível só pelo seu usuário (permissão 600 no Linux). Assim, a proteção dos certificados depende da segurança da sua conta no computador — use senha de login e criptografia de disco.
+- Cofres antigos, criados com senha mestra (PBKDF2-HMAC-SHA-256, 600.000 iterações), pedem a senha uma única vez para migrar para o desbloqueio automático.
 - O app não registra senhas, chaves privadas nem conteúdo de documentos em logs.
 
 ## Compilar a partir do código

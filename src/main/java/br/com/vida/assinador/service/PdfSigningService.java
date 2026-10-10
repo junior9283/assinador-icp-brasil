@@ -35,16 +35,16 @@ import java.awt.Font;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
-import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.function.Function;
 
 public final class PdfSigningService {
@@ -106,7 +106,7 @@ public final class PdfSigningService {
          */
         public SigningResult sign(Path input, Function<PDDocument, SignaturePlacement> placement) {
             Path output = OutputNamingService.nextAvailable(input);
-            Path temp = output.resolveSibling(output.getFileName() + ".tmp");
+            Path temp = output.resolveSibling(output.getFileName() + "." + UUID.randomUUID() + ".tmp");
             boolean outputCreated = false;
 
             try {
@@ -241,17 +241,17 @@ public final class PdfSigningService {
         }
     }
 
-    /** Grava no temporário e move para o destino; qualquer falha de escrita vira uma mensagem única e clara. */
+    /**
+     * Grava num temporário novo (CREATE_NEW não segue links simbólicos nem reaproveita arquivo existente; o nome
+     * aleatório evita colidir com sobras de execuções interrompidas) e move para o destino sem sobrescrever.
+     * Qualquer falha de escrita vira uma mensagem única e clara.
+     */
     private static void writeAtomically(DSSDocument signed, Path temp, Path output) throws IOException {
         try {
-            try (OutputStream stream = Files.newOutputStream(temp)) {
+            try (OutputStream stream = Files.newOutputStream(temp, StandardOpenOption.CREATE_NEW)) {
                 signed.writeTo(stream);
             }
-            try {
-                Files.move(temp, output, StandardCopyOption.ATOMIC_MOVE);
-            } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temp, output);
-            }
+            Files.move(temp, output);
         } catch (IOException e) {
             throw new IOException(
                     "Não foi possível gravar o PDF assinado na pasta do arquivo original ("
