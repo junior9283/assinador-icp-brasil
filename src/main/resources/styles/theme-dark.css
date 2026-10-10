@@ -1,0 +1,19 @@
+/* Tema escuro do Assinador: Nord do AtlantaFX com destaque âmbar (modelo "Mesa de trabalho"). */
+@import "/atlantafx/base/theme/nord-dark.css";
+
+.root {
+    -fx-font-size: 13px;
+    -color-accent-fg: #e8b45e;
+    -color-accent-emphasis: #e3a440;
+    -color-accent-muted: #6e5326;
+    -color-accent-subtle: #3a3122;
+}
+
+/* Texto escuro sobre o âmbar claro, só nos controles preenchidos com o destaque. */
+.button:default,
+.button.accent,
+.check-box,
+.radio-button,
+.toggle-button {
+    -color-fg-emphasis: #1f1606;
+}

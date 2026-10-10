@@ -1,0 +1,22 @@
+# Build
+target/
+*.class
+*.AppImage
+*.zip
+
+# Certificados, chaves e dados locais — nunca versionar
+*.p12
+*.pfx
+*.jks
+*.pem
+*.key
+.assinador/
+
+# Anotações internas
+docs/CONTINUAR-NO-WINDOWS.md
+
+# IDE / sistema
+.idea/
+.vscode/
+*.iml
+.DS_Store

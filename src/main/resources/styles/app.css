@@ -1,0 +1,145 @@
+/* Layout do Assinador; as cores vêm dos temas theme-light.css e theme-dark.css. */
+
+/* ---------- Barras e painéis ---------- */
+.top-bar,
+.work-toolbar,
+.inspector {
+    -fx-background-color: -color-bg-default;
+    -fx-border-color: -color-border-default;
+}
+
+.top-bar {
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8px 16px;
+    -fx-spacing: 12px;
+}
+
+.work-toolbar {
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 8px 14px;
+    -fx-spacing: 12px;
+}
+
+.inspector {
+    -fx-border-width: 0 0 0 1;
+    -fx-padding: 16px;
+}
+
+.brand-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 800;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 6px;
+    -fx-padding: 6px 12px;
+    -fx-text-fill: -color-fg-muted;
+    -fx-font-weight: 600;
+}
+
+.nav-button:hover {
+    -fx-background-color: -color-bg-subtle;
+}
+
+.nav-button:selected {
+    -fx-background-color: -color-accent-subtle;
+    -fx-text-fill: -color-accent-fg;
+}
+
+.privacy-badge {
+    -fx-background-color: -color-accent-subtle;
+    -fx-text-fill: -color-accent-fg;
+    -fx-background-radius: 999px;
+    -fx-padding: 4px 10px;
+    -fx-font-weight: 600;
+}
+
+/* ---------- Mesa de trabalho ---------- */
+.document-title,
+.button.accent {
+    -fx-font-weight: 700;
+}
+
+.mono {
+    -fx-font-family: "monospace";
+}
+
+.thumbnails {
+    -fx-background-color: -color-bg-subtle;
+    -fx-background-insets: 0;
+    -fx-border-color: -color-border-default;
+    -fx-border-width: 0 1 0 0;
+}
+
+.thumbnails .list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8px 0;
+    -fx-alignment: center;
+}
+
+.thumbnails .list-cell:selected {
+    -fx-background-color: -color-accent-subtle;
+}
+
+.thumbnails .list-cell:selected .label {
+    -fx-text-fill: -color-accent-fg;
+    -fx-font-weight: 700;
+}
+
+.canvas-area .scroll-pane,
+.canvas-area .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.batch-list .list-cell {
+    -fx-padding: 8px 12px;
+}
+
+/* A prévia vem com fundo transparente; a folha branca e a sombra ficam no contêiner da página. */
+.page-sheet {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.30), 14, 0, 0, 3);
+}
+
+.empty-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+}
+
+.inspector-title {
+    -fx-font-size: 12px;
+    -fx-font-weight: 700;
+}
+
+.sign-button {
+    -fx-padding: 10px 14px;
+}
+
+/* O carimbo fica sobre a página branca do PDF, por isso usa cores fixas além do destaque. */
+.signature-stamp {
+    -fx-background-color: rgba(227, 164, 64, 0.16);
+    -fx-border-color: -color-accent-emphasis;
+    -fx-border-width: 1.5px;
+    -fx-border-style: dashed;
+    -fx-background-radius: 3px;
+    -fx-border-radius: 3px;
+    -fx-cursor: move;
+}
+
+.stamp-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6b4a12;
+}
+
+/* ---------- Telas de Certificados e Configurações ---------- */
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: 800;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: 700;
+    -fx-padding: 4px 0 2px 0;
+}

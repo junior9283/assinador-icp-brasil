@@ -1,0 +1,10 @@
+/* Tema claro do Assinador: Nord do AtlantaFX com destaque âmbar (modelo "Mesa de trabalho"). */
+@import "/atlantafx/base/theme/nord-light.css";
+
+.root {
+    -fx-font-size: 13px;
+    -color-accent-fg: #8a5606;
+    -color-accent-emphasis: #9c6208;
+    -color-accent-muted: #e6c48a;
+    -color-accent-subtle: #f6ead6;
+}
